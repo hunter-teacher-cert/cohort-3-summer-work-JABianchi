@@ -1,7 +1,7 @@
 /**
  * ArrayPractice by Team BossCoders
  * Joel Bianchi
- * collaborators: (9)jingxue8303, michaelpark677, ehawkins18
+ * collaborators: (Group 9)jingxue8303, michaelpark677, ehawkins18
  */
 
 /**
@@ -50,13 +50,30 @@ public class ArrayPractice
 
     int[] data = buildRandomArray(10, 20);
     int[] data2 = buildIncreasingArray(10,5,3);
+    System.out.println("data array: ");
     printArray(data);
+    System.out.println("data2 array: ");
     printArray(data2);
 
     int fo = firstOccurence(data,17);
     System.out.println("First occurrence of 17 is at " + fo);
 
+    int mv =  findMaxValue(data);
+    System.out.println("Max value is " + mv);
+
+    int sum = arraySum(data);
+    System.out.println("Array sum is " + sum);
+
+    boolean sort = isSorted(data);
+    boolean sort2 = isSorted(data2);
+    System.out.println( "sorted data?" +  sort );
+    System.out.println( "sorted data2?" +  sort2);
+
+    int co = countOdds(data);
+    System.out.println("The number of odds in data: " + co);
+
     flip(data);
+    System.out.println("The flipped array:");
     printArray(data);
 
     // add calls to show that the methods you write work.
@@ -78,13 +95,10 @@ public class ArrayPractice
     int[] data = new int[size];
 
     // loop through each element of the array and
-    /* YOUR BRILLIANT CODE HERE */
     for(int i=0; i<data.length; i++){
       
       // assign the appropriate value to each one.
-      /* YOUR BRILLIANT CODE HERE */
-      data[i] = startValue + i*step;
-            
+      data[i] = startValue + i*step;       
     }
     
     return data;
@@ -103,8 +117,6 @@ public class ArrayPractice
   {
     //create a new array
     int[] data = new int[size];
-
-    /* YOUR BRILLIANT CODE HERE */
 
     //loop through each element
     for(int i=0; i<data.length; i++){
@@ -131,12 +143,7 @@ public class ArrayPractice
   */
   public static void printArray( int[] data )
   {
-    // Field f = data.getClass().getFields()[0];
-    // String t = f.getGenericType().toString();
-    // String n = f.getName();
-    // System.out.println(t + "\t" + n + "\t");
-    
-    /* YOUR BRILLIANT CODE HERE */
+
     for(int i=0; i<data.length; i++){
       System.out.print(data[i] + " ");
     }
@@ -158,22 +165,19 @@ public class ArrayPractice
   */
   public static int firstOccurence( int[] data, int value )
   {
-    /* YOUR BRILLIANT CODE HERE */
-
     //setup a variable to track the first target index
     // (initialize with an index that is not in the array)
     int targetIndex = -1;
     
     //loop through the array backwards
     //(the last time you see the target will be the first occurence)
-    for(int i=data.length-1; i<=0; i--){
+    for(int i=data.length-1; i>=0; i--){
 
       //if you see the target...
       if(data[i] == value){
 
         //record the index
-        targetIndex = i;
-                
+        targetIndex = i;     
       }
             
     }
@@ -187,11 +191,18 @@ public class ArrayPractice
      Ex: If the input array has the values 5,2,4,10 the return
      value will be 21 (5+2+4+10)
   */
-  public static int arraySum( int[] data )
-  {
-    /* YOUR BRILLIANT CODE HERE */
+  public static int arraySum( int[] data ){
+    //initialize sum to be zero
+    int sum =0;
 
-    return 0; // replace this
+    //loop through array
+    for (int i = 0; i < data.length; i++){
+      
+      //add each element to the sum
+      sum += data[i];
+    }
+
+    return sum; 
   }
 
 
@@ -205,12 +216,21 @@ public class ArrayPractice
      An array with values 5,6,10,15 is sorted
      An array with values 5,6,10,13,15 is not
   */
-  public static boolean isSorted( int[] data )
-  {
-    /* YOUR BRILLIANT CODE HERE */
+  public static boolean isSorted( int[] data ){
 
-    return true; // replace this
+    //loop through the array
+    for (int i=0; i< data.length -1; i++){
+      
+      //check if the element to the left is bigger
+      if (data[i] >  data[i+1]){
+        
+        //trigger false if not in order
+        return false;
+      }
+    }
 
+    //return true if it never got triggered
+    return true;
   }
 
   /**
@@ -220,11 +240,20 @@ public class ArrayPractice
      value of the largest element in the array
   */
   public static int findMaxValue( int[] data ) {
-    int m = data[0];  // will hold the maximum value;
+    
+    // will hold the maximum value
+    int max= data[0];
 
-    /* YOUR BRILLIANT CODE HERE */
+    //loop through every int
+    for (int i =0; i < data.length; i++){
+      //compare current int to the current max
+      if (data[i] > max){
+        //change max if needed
+        max = data [i];
+      }
+    }
 
-    return m;
+    return max;
   }
 
 
@@ -237,9 +266,20 @@ public class ArrayPractice
      will be 3 since three of the elements are odd.
   */
   public static int countOdds( int[] data ) {
-    int count = -1;
 
-    /* YOUR BRILLIANT CODE HERE */
+    //start counting at zero
+    int count = 0;
+
+    //loop through the entire array
+    for (int i =0; i < data.length; i++){
+      
+      //check if the int is odd
+      if (data[i] % 2 != 0){
+        
+        //add it to the count
+        count ++;  
+      }
+    }
 
     // Note the % operator is the modulo (basically remainder) function
     // in java. Use to determine if an integer is odd.
@@ -261,11 +301,18 @@ public class ArrayPractice
   */
   public static void flip( int[] data )
   {
-    /* YOUR BRILLIANT CODE HERE */
+    //loop through half of the array
     for(int i=0; i<data.length/2; i++){
+
+      //store the first element
       int temp = data[i];
+
+      //move the last element to the first spot
       data[i] = data[data.length -1 -i];
+
+      //move the first element to the last spot
       data [data.length -1 -i] = temp;
+      
     }
   }
 
