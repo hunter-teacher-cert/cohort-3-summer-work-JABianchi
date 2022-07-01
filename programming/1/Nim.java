@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Nim{
 
-  public static final String[] OPPONENTS = {"Josh", "Joel", "Moo Joon", "Marieke", "Rachel"};
+  public static final String[] OPPONENTS = {"Josh", "Marieke", "Rachel", "Moo Joon", "Joel"};
 
   public static void main(String[] antartica){
     System.out.println("Nim class starting!");
