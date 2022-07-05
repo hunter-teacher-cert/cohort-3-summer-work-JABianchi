@@ -5,13 +5,8 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 import java.util.*;
 import java.io.*;
-=======
-// import java.util.*;
-// import java.io.*;
->>>>>>> origin/master
 =======
 // import java.util.*;
 // import java.io.*;
