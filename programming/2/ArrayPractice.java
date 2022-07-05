@@ -1,82 +1,46 @@
 /**
- * ArrayPractice by Team BossCoders
- * Joel Bianchi
- * collaborators: (Group 9)jingxue8303, michaelpark677, ehawkins18
+ * ArrayPractice by Team Javengers (9)
+ * Joel Bianchi (JABianchi)
+ * collaborators: Jing (jingxue8303), Mike (michaelpark677), Ed (ehawkins18)
  */
-
-/**
-   INSTRUCTIONS:
-   This file contains stubs (empty methods) for the following methods:
-   1. buildIncreasingArray
-   2. buildRandomArray
-   3. printArray
-   4. arraySum
-   5. firstOccurence
-   6. isSorted
-   7. findMaxValue
-   8. countOdds
-   9. flip
-   The stubs will have comments describing what they should do
-   Levels:
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   Basic:
-   Complete these methods:
-   - buildRandomArray !
-   - printArray !
-   - arraySum
-   - firstOccurence !
-   - findMaxValue
-   Intermediate:
-   Complete all the methods for basic and also
-   - buildIncreasingArray !
-   - isSorted
-   - countOdds
-   Advanced:
-   - flip !
-*/
 
 import java.util.*;
 import java.io.*;
-import java.lang.reflect.Field;
 
 public class ArrayPractice
 {
 
   public static void main( String[] args )
   {
-
-    // remove the comments as you complete each routine
-    // and add more lines as you add additional routines.
-
+    // add calls to show that the methods you write work
     int[] data = buildRandomArray(10, 20);
-    int[] data2 = buildIncreasingArray(10,5,3);
-    System.out.println("data array: ");
+    System.out.println("\ndata array: ");
     printArray(data);
-    System.out.println("data2 array: ");
+
+    int[] data2 = buildIncreasingArray(10,5,3);
+    System.out.println("\ndata2 array: ");
     printArray(data2);
 
     int fo = firstOccurence(data,17);
-    System.out.println("First occurrence of 17 is at " + fo);
+    System.out.println("\nFirst occurrence of 17 in data is at " + fo);
 
     int mv =  findMaxValue(data);
-    System.out.println("Max value is " + mv);
+    System.out.println("\nMax value of data is " + mv);
 
     int sum = arraySum(data);
-    System.out.println("Array sum is " + sum);
+    System.out.println("\nArray sum of data is " + sum);
 
     boolean sort = isSorted(data);
     boolean sort2 = isSorted(data2);
-    System.out.println( "sorted data?" +  sort );
-    System.out.println( "sorted data2?" +  sort2);
+    System.out.println( "\nIs data sorted? " +  sort );
+    System.out.println( "Is data2 sorted? " +  sort2);
 
     int co = countOdds(data);
-    System.out.println("The number of odds in data: " + co);
+    System.out.println("\nThe number of odds in data: " + co);
 
     flip(data);
-    System.out.println("The flipped array:");
+    System.out.println("\nThe flipped data array:");
     printArray(data);
-
-    // add calls to show that the methods you write work.
   }
 
   /**
@@ -92,6 +56,7 @@ public class ArrayPractice
   */
   public static int[] buildIncreasingArray( int size, int startValue, int step )
   {
+    //create a new array of ints
     int[] data = new int[size];
 
     // loop through each element of the array and
@@ -100,7 +65,8 @@ public class ArrayPractice
       // assign the appropriate value to each one.
       data[i] = startValue + i*step;       
     }
-    
+
+    //return the array
     return data;
   }
 
@@ -129,6 +95,7 @@ public class ArrayPractice
       
     }
 
+    //return the array
     return data;
   }
 
@@ -143,13 +110,11 @@ public class ArrayPractice
   */
   public static void printArray( int[] data )
   {
-
     for(int i=0; i<data.length; i++){
       System.out.print(data[i] + " ");
     }
     System.out.println();
   }
-
 
 
   /**
@@ -181,7 +146,9 @@ public class ArrayPractice
       }
             
     }
-    return targetIndex; //will return -1 if it did not find the target
+    
+    //will return -1 if it did not find the target
+    return targetIndex;
   }
 
 
@@ -274,15 +241,13 @@ public class ArrayPractice
     for (int i =0; i < data.length; i++){
       
       //check if the int is odd
+      //(when the remainder/mod from 2 is not 0)
       if (data[i] % 2 != 0){
         
         //add it to the count
         count ++;  
       }
     }
-
-    // Note the % operator is the modulo (basically remainder) function
-    // in java. Use to determine if an integer is odd.
 
     return count;
   }
@@ -317,3 +282,35 @@ public class ArrayPractice
   }
 
 }
+
+
+/**
+   INSTRUCTIONS:
+   This file contains stubs (empty methods) for the following methods:
+   1. buildIncreasingArray
+   2. buildRandomArray
+   3. printArray
+   4. arraySum
+   5. firstOccurence
+   6. isSorted
+   7. findMaxValue
+   8. countOdds
+   9. flip
+   The stubs will have comments describing what they should do
+   Levels:
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Basic:
+   Complete these methods:
+   - buildRandomArray !
+   - printArray !
+   - arraySum
+   - firstOccurence !
+   - findMaxValue
+   Intermediate:
+   Complete all the methods for basic and also
+   - buildIncreasingArray !
+   - isSorted
+   - countOdds
+   Advanced:
+   - flip !
+*/
