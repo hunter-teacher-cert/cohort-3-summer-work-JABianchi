@@ -23,8 +23,17 @@ import java.util.*;
    NOTA BENE:  All births and deaths occur simultaneously. Together, they constitute a single generation.
 */
 
+
 public class Cgol
 {
+
+  //Color declarations to help with printing in color
+  //https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
+  public static final String ANSI_RESET = "\u001B[0m";
+  public static final String ANSI_BLUE_BG = "\u001B[44m";
+  public static final String ANSI_YELLOW_BG = "\u001B[43m";
+  public static final String ANSI_RED = "\u001B[31m";
+  
 
   public static void main( String[] args )
   {
@@ -53,11 +62,13 @@ public class Cgol
       }
 
       //print out in console
-      System.out.println("\n\n--------------------------");
+      System.out.println("\n\n");
+      System.out.println(ANSI_YELLOW_BG);
+      System.out.println("--------------------------");
       System.out.println("Gen X+" + i +": \tSeed Pct: " + pctToPopulate);
       System.out.println("--------------------------");
       printBoard(board);
-      System.out.println("--------------------------\n\n");
+      System.out.println("--------------------------");
       printGenReport(board);
     }
  
@@ -86,6 +97,10 @@ public class Cgol
   //print the board to the terminal
   public static void printBoard( char[][] board )
   {
+
+    //Code to turn the printout blue
+    System.out.println(ANSI_BLUE_BG);
+    
     //traverse 2D array
     for(char[] row : board){
       for(char cell: row){
@@ -95,6 +110,10 @@ public class Cgol
       //go to a new line for each row
       System.out.println();
     }
+
+    //Code to reset the printout color
+    System.out.println(ANSI_RESET);
+
   }
 
 
