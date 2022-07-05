@@ -72,6 +72,10 @@ public class Array2DPractice
     explodeAllChar(b, '@');
     printBoard(b);
 
+    System.out.println("Writing \"GOODBYE\" downwards starting @ 1,3 on board b");
+    downString(b,1,3,"GOODBYE");
+    printBoard(b);
+
     
 
     
@@ -301,7 +305,27 @@ public class Array2DPractice
   */
   public static void downString( char[][] board, int row, int col, String word )
   {
-    /* YOUR AWESOME CODE HERE */
-  }
+    //Determine number of characters that will fit on the board
+    int printableLetters = word.length();
+    int lettersThatCanFit = board.length - row;
+    if(printableLetters > lettersThatCanFit){
+      printableLetters = lettersThatCanFit;
+      word = word.substring(0,printableLetters);  //shorten word accordingly
+    }
 
+    //loop through each character in the printable String word
+    for(int i=0; i < printableLetters; i++){
+
+      //Determine the letter
+      char letter = word.charAt(i);
+
+      //which row should it be on?
+      int rowPrint = row + i;
+      
+      //Assign the letter to the board
+      board[rowPrint][col] = letter;     
+      
+    }    
+  }
+  
 }
