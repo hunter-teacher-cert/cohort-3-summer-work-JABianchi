@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * Array2DPractice by Team LucidThinkeren
- * Joel Bianchi
+ * Joel Bianchi JABianchi
  * collaborators:
  *   Joshua Higgins Mr-Higgins
  *   Vanessa Hou qvzou
