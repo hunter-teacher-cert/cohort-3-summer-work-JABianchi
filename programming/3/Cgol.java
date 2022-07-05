@@ -239,10 +239,11 @@ public class Cgol
     int total = board.length * board[0].length;
     int living = getTotalLivingCells(board);
     double pctLiving = ( (double) living) / total * 100;
+    String pctLivingString = String.format("%.1f%%",pctLiving);
     
     System.out.println("Total Living Cells: " + living );
     System.out.println("Total Cells: " + total);
-    System.out.println("Percentage of Cells living: " + pctLiving + "%");
+    System.out.println("Percentage of Cells living: " + pctLivingString);
 
     
   }
