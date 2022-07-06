@@ -4,19 +4,6 @@
  * collaborators: Jing (jingxue8303), Mike (michaelpark677), Ed (ehawkins18)
  */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-import java.util.*;
-import java.io.*;
-=======
-// import java.util.*;
-// import java.io.*;
->>>>>>> origin/master
-=======
-// import java.util.*;
-// import java.io.*;
->>>>>>> origin/master
-
 public class ArrayPractice
 {
 
