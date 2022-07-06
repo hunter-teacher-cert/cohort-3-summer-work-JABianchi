@@ -34,7 +34,7 @@ public class CgolExtra
 
   //Grid Constants
   public static final int ROWS = 10;
-  public static final int COLUMNS = ROWS * 2;
+  public static final int COLUMNS = ROWS * 6;
   public static final char ALIVE = (char) 9633;  // ■
  //public static final char ALIVE = 'O';
   public static final char DEAD = ' ';
