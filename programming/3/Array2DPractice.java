@@ -208,8 +208,12 @@ public class Array2DPractice
      Note: Make sure to correctly handle the cases when you try
      to explode an element on the edges.
   */
-  public static void explodeSquare( char[][] board, int row, int col )
+  public static void explodeSquare( char[][] board, int row, int col)
   {
+
+    //check what character is being exploded around
+    char targetChar = board[row][col];
+    
     //determine the indices for the 4 main directions
     int up = row - 1;
     int down = row + 1;
@@ -227,8 +231,13 @@ public class Array2DPractice
           //also check that you don't erase the middle
           if(r != row || c != col){
 
-            //Change it to an X
-            board[r][c] = 'X';          
+            //also also check to not erase any other targets with the same character
+            if(board[r][c] != targetChar){
+              
+              //Change it to an X
+              board[r][c] = 'X';              
+            }   
+            
           }                
         }  
       }
@@ -256,7 +265,7 @@ public class Array2DPractice
     for(int r=0; r<board.length; r++){
       for(int c=0; c<board[r].length; c++){
 
-        //check if you see character ch
+        //check if you find the character ch in a cell
         if(board[r][c] == ch){
 
           //run the explodeSquare method
