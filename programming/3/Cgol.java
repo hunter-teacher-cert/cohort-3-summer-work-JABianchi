@@ -30,11 +30,9 @@ public class Cgol
   //Color declarations to help with printing in color
   //https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
   public static final String ANSI_RESET = "\u001B[0m";
-  public static final String ANSI_BLUE_BG = "\u001B[44m";
+  public static final String ANSI_GREEN_BG = "\u001B[42m";
   public static final String ANSI_YELLOW_BG = "\u001B[43m";
   public static final String ANSI_RED = "\u001B[31m";
-
-  
   
 
   public static void main( String[] args )
@@ -106,7 +104,7 @@ public class Cgol
   {
 
     //Code to turn the printout blue
-    System.out.println(ANSI_BLUE_BG);
+    System.out.println(ANSI_GREEN_BG);
     
     //traverse 2D array
     for(char[] row : board){
@@ -144,11 +142,10 @@ public class Cgol
       }
     }
   }
-    
 
 
   //return number of living neigbours of board[r][c]
-  public static int countNeighbors( char[][] board, int row, int col )
+  public static int countneighbours( char[][] board, int row, int col )
   {
     int count = 0;
 
@@ -172,7 +169,7 @@ public class Cgol
             //finally, check if the cell has a 'X' for a living cell
             if(board[r][c] == 'X'){
 
-              //increment the count if a neighbor is alive
+              //increment the count if a neighbour is alive
               count++;
               
             }
@@ -202,17 +199,17 @@ public class Cgol
       isLiving = true;
     }
 
-    //check for number of living neighbors
-    int numLivingNeighbors = countNeighbors(board,r,c);
+    //check for number of living neighbours
+    int numLivingneighbours = countneighbours(board,r,c);
     
     //CASE 1: LIVING --> LIVING
-    if(isLiving && (numLivingNeighbors == 2 || numLivingNeighbors == 3)){
+    if(isLiving && (numLivingneighbours == 2 || numLivingneighbours == 3)){
       //cell keeps living
       nextGenCellStatus = 'X';      
     }
 
     //CASE 2: DEAD --> BIRTH
-    else if (numLivingNeighbors == 3){
+    else if (numLivingneighbours == 3){
       nextGenCellStatus = 'X';
     }
 
@@ -228,6 +225,10 @@ public class Cgol
   public static char[][] generateNextBoard( char[][] board )
   {
 
+    int row = board.length;
+    int col = board[0].length;
+    char[][] newBoard = new char[row][col];
+    
     //loop through all the cells in the board
     for(int r=0; r<board.length; r++){
       for(int c=0; c<board[r].length; c++){
