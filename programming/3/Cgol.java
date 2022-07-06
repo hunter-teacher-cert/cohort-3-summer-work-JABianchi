@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * Conway's Game of Life Team AreWeSentientYet?
  * Joel Bianchi
- * collaborators: 
+ * collaborators: Thea Williams, Ed Hawkins 
  */
 
 /**
@@ -33,6 +33,8 @@ public class Cgol
   public static final String ANSI_BLUE_BG = "\u001B[44m";
   public static final String ANSI_YELLOW_BG = "\u001B[43m";
   public static final String ANSI_RED = "\u001B[31m";
+
+  
   
 
   public static void main( String[] args )
@@ -40,14 +42,19 @@ public class Cgol
     //create a new board
     char[][] board;
     board = createNewBoard(25,25);
+
+    //setup another board to track the previous generation
+    char[][] oldBoard = createNewBoard(board.length, board[0].length);
     
     //set the random percentage to populate 
-    double pctToPopulate = 0.18;
+    double pctToPopulate = 0.125;
 
-    //Create X generations of the game
-    int numGens = 20;
-    for(int i=0; i<=numGens; i++){
-
+    //Create gens until there are less than 2 changes OR stop after 2
+    int numChanges = -1;
+    int maxGens = 100;
+    
+    for(int i=0; i <= maxGens && (numChanges > 2 || numChanges == -1); i++){
+      
       //populate the new board for Gen 0
       if(i == 0){
         //breathe life into some cells:
@@ -62,14 +69,14 @@ public class Cgol
       }
 
       //print out in console
-      System.out.println("\n\n");
-      System.out.println(ANSI_YELLOW_BG);
-      System.out.println("--------------------------");
-      System.out.println("Gen X+" + i +": \tSeed Pct: " + pctToPopulate);
-      System.out.println("--------------------------");
-      printBoard(board);
-      System.out.println("--------------------------");
-      printGenReport(board);
+      printGenReport(board, i, pctToPopulate);
+
+      //determine how many changes occured from previous gen
+      numChanges = totalChanges(board, oldBoard);
+      System.out.println("Number of Changes: " + numChanges);
+
+      //copy the board to oldBoard to analyze the differences later
+      oldBoard = copyBoard(board);
     }
  
   }//end main()
@@ -234,18 +241,25 @@ public class Cgol
     return board;
   }
 
-  public static void printGenReport(char[][] board){
+  public static void printGenReport(char[][] board, int genNum, double pctToPopulate){
+
+    System.out.println("\n\n");
+    System.out.println(ANSI_YELLOW_BG);
+    System.out.println("--------------------------");
+    System.out.println("Gen X+" + genNum +": \tSeed Pct: " + pctToPopulate);
+    System.out.println("--------------------------");
+    printBoard(board);
+    System.out.println("--------------------------");
 
     int total = board.length * board[0].length;
     int living = getTotalLivingCells(board);
     double pctLiving = ( (double) living) / total * 100;
     String pctLivingString = String.format("%.1f%%",pctLiving);
-    
+
     System.out.println("Total Living Cells: " + living );
     System.out.println("Total Cells: " + total);
     System.out.println("Percentage of Cells living: " + pctLivingString);
 
-    
   }
 
   public static int getTotalLivingCells(char[][] board){
@@ -266,6 +280,41 @@ public class Cgol
     }
     return count;
     
+  }
+
+  /**
+     creates and returns a new 2D array of char the same size as
+     original and copies all the elements
+    //copied from group work with Vanessa, Joshua, and Yenmin
+  */
+  public static char[][] copyBoard( char[][] original )
+  {
+    //create an array that's the same size as the original
+    int row = original.length;
+    int col = original[0].length;
+    char[][] food = new char[row][col];
+
+    //copy all the elements over from original to the new array
+    for(int r=0; r<food.length; r++){
+      for(int c=0; c<food[0].length; c++){
+        food[r][c] = original[r][c];
+      }
+    }
+
+    //return the new array
+    return food;
+  }
+
+  public static int totalChanges(char[][] board, char[][] oldBoard){
+    int changes = 0;
+    for(int r=0; r<board.length; r++){
+      for(int c=0; c<board[r].length; c++){
+        if(board[r][c] != oldBoard[r][c]){
+          changes++;
+        }
+      }
+    }
+    return changes;
   }
 
 }//end class

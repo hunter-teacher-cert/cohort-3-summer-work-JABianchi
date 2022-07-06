@@ -1,4 +1,4 @@
 language = "bash"
 #run = "cd programming/2; javac ArrayPractice.java; java ArrayPractice"
-run = "cd programming/3; javac Array2DPractice.java; java Array2DPractice"
-#run = "cd programming/3; javac Cgol.java; java Cgol"
+#run = "cd programming/3; javac Array2DPractice.java; java Array2DPractice"
+run = "cd programming/3; javac Cgol.java; java Cgol"
