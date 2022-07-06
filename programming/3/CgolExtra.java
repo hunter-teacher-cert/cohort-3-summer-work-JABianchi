@@ -14,63 +14,89 @@ public class CgolExtra
   //https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_GREEN_BG = "\u001B[42m";
+  public static final String ANSI_BLUE_BG = "\u001B[44m";
   public static final String ANSI_YELLOW_BG = "\u001B[43m";
   public static final String ANSI_RED = "\u001B[31m";
+  public static final String ANSI_GREEN = "\u001B[32m";
+  public static final String ANSI_BLACK = "\u001B[30m";
+  
+  public static final String HEADER_BG = ANSI_YELLOW_BG;
+  //public static final String FIELD_BG = ANSI_BLUE_BG;
+  public static final String CELL_TEXT = ANSI_BLACK;
+  public static final String DEAD_COLOR = ANSI_BLUE_BG;
+  public static final String ALIVE_COLOR = ANSI_GREEN_BG;  
 
   //Animation Constants
   public static final String CLEAR_SCREEN =  "\033[2J";
   public static final String TO_TOP_OF_SCREEN = "\033[1;1H";
   public static final String HIDE_CURSOR = "\033[?25l";
-  public static final int FRAME_RATE = 250;
+  public static final int FRAME_RATE = 100;
 
- 
+  //Grid Constants
+  public static final int ROWS = 10;
+  public static final int COLUMNS = ROWS * 2;
+  public static final char ALIVE = (char) 9633;  // ■
+ //public static final char ALIVE = 'O';
+  public static final char DEAD = ' ';
+
+  public static final double PCT_TO_POPULATE = 0.25;
+  public static final int MAX_GENS = 200; 
+
+  public static boolean isAnimating = true;
+  
+  
 
   public static void main( String[] args )
   {
     //create a new board
     char[][] board;
-    board = createNewBoard(25,50);
+    board = createNewBoard(ROWS, COLUMNS);
 
     //setup another board to track the previous generation
     char[][] oldBoard = createNewBoard(board.length, board[0].length);
     
-    //set the random percentage to populate 
-    double pctToPopulate = 0.18;
-
     //Create gens until there are less than 2 changes OR stop after 2
     int numChanges = -1;
-    int maxGens = 100;
+
+    //clear screen before printing out animation
+    if(isAnimating){
+      System.out.print(CLEAR_SCREEN + HIDE_CURSOR);   
+    }
     
-    for(int i=0; i <= maxGens && (numChanges > 2 || numChanges == -1); i++){
+    for(int i=0; i <= MAX_GENS && (numChanges > 2 || numChanges == -1); i++){
       
       //populate the new board for Gen 0
       if(i == 0){
         //breathe life into some cells:
-        randomlyPopulateBoard(board, pctToPopulate);
-        // setCell(board, 0, 0, 'X');
-        // setCell(board, 0, 1, 'X');
-        // setCell(board, 1, 0, 'X');
+        randomlyPopulateBoard(board, PCT_TO_POPULATE);
+        wait(1000);
 
       //Update the board for future Generations
       } else {
         board = generateNextBoard(board);     
       }
 
+      //start the cursor at the top of the screen again
+      System.out.print(TO_TOP_OF_SCREEN);
+      
       //print out in console with animation
-      System.out.print(CLEAR_SCREEN + HIDE_CURSOR);
-      printGenReport(board, i, pctToPopulate);
+      printGenReport(board, i, PCT_TO_POPULATE);
 
       //determine how many changes occured from previous gen
       numChanges = totalChanges(board, oldBoard);
       System.out.println("Number of Changes: " + numChanges);
 
-      //pause the screen for a certain amount of milliseconds
-      wait(FRAME_RATE);
 
-      //start the cursor at the top of the screen again
-      System.out.print(TO_TOP_OF_SCREEN);
-
-      
+      if(isAnimating){
+        //pause the screen for a certain amount of milliseconds
+        wait(FRAME_RATE);
+  
+        //cleanup glitch from initial frame
+        if(i==0){
+          System.out.print(CLEAR_SCREEN);
+        }         
+      }
+     
       //copy the board to oldBoard to analyze the differences later
       oldBoard = copyBoard(board);
     }
@@ -89,7 +115,7 @@ public class CgolExtra
       for(int c=0; c<board[0].length; c++){
 
         //assign a space character for dead cells
-        board[r][c] = ' ';
+        board[r][c] = DEAD;
       }
     }  
 
@@ -101,21 +127,31 @@ public class CgolExtra
   public static void printBoard( char[][] board )
   {
 
-    //Code to turn the printout blue
-    System.out.println(ANSI_GREEN_BG);
+    //Code to turn the field a background color
+    //System.out.print(FIELD_BG);
+    System.out.print(CELL_TEXT);
     
     //traverse 2D array
     for(char[] row : board){
       for(char cell: row){
+
+        if(cell == ALIVE){
+          System.out.print(ALIVE_COLOR);
+        } else {
+          System.out.print(DEAD_COLOR);
+        }
+        
         //print out cell's char
         System.out.print(cell + "");
+
+        
       }
       //go to a new line for each row
       System.out.println();
     }
 
     //Code to reset the printout color
-    System.out.println(ANSI_RESET);
+    System.out.print(ANSI_RESET);
 
   }
 
@@ -134,7 +170,7 @@ public class CgolExtra
 
         //Each cell has a random chance of living if over the 'pct' threshhold
         if(Math.random() < pct){
-          setCell(board, r, c, 'X');       
+          setCell(board, r, c, ALIVE);       
         }
   
       }
@@ -164,8 +200,8 @@ public class CgolExtra
           //also check that you don't count the middle cell
           if(r != row || c != col){
 
-            //finally, check if the cell has a 'X' for a living cell
-            if(board[r][c] == 'X'){
+            //finally, check if the cell has a ALIVE for a living cell
+            if(board[r][c] == ALIVE){
 
               //increment the count if a neighbour is alive
               count++;
@@ -183,17 +219,17 @@ public class CgolExtra
   /**
      precond: given a board and a cell
      postcond: return next generation cell state based on CGOL rules
-     (alive 'X', dead ' ')
+     (alive ALIVE, dead DEAD)
   */
   public static char getNextGenCell( char[][] board,int r, int c )
   {
 
     //initialize cell's char as dead by default
-    char nextGenCellStatus = ' '; 
+    char nextGenCellStatus = DEAD; 
 
     //check if the earlier cell was living
     boolean isLiving = false;
-    if(board[r][c] == 'X'){
+    if(board[r][c] == ALIVE){
       isLiving = true;
     }
 
@@ -203,12 +239,12 @@ public class CgolExtra
     //CASE 1: LIVING --> LIVING
     if(isLiving && (numLivingneighbours == 2 || numLivingneighbours == 3)){
       //cell keeps living
-      nextGenCellStatus = 'X';      
+      nextGenCellStatus = ALIVE;      
     }
 
     //CASE 2: DEAD --> BIRTH
     else if (numLivingneighbours == 3){
-      nextGenCellStatus = 'X';
+      nextGenCellStatus = ALIVE;
     }
 
     //CASE 3: --> DEAD
@@ -241,24 +277,26 @@ public class CgolExtra
   }
 
   //method to print out an animated report each generation
-  public static void printGenReport(char[][] board, int genNum, double pctToPopulate){
+  public static void printGenReport(char[][] board, int genNum, double PCT_TO_POPULATE){
 
-    //System.out.println("\n\n");
-    System.out.println(ANSI_YELLOW_BG);
+    //print yellow header
+    System.out.println(HEADER_BG);
     System.out.println("--------------------------");
-    System.out.println("Gen X+" + genNum +": \tSeed Pct: " + pctToPopulate);
+    System.out.println("Gen X+" + genNum +"    Seed Pct: " + PCT_TO_POPULATE);
     System.out.println("--------------------------");
+    
+    //print green board
     printBoard(board);
-    System.out.println("--------------------------");
 
+    //print bottom stats report
+    System.out.println("--------------------------");
     int total = board.length * board[0].length;
     int living = getTotalLivingCells(board);
     double pctLiving = ( (double) living) / total * 100;
     String pctLivingString = String.format("%.1f%%",pctLiving);
-
     System.out.println("Total Living Cells: " + living );
     System.out.println("Total Cells: " + total);
-    System.out.println("Percentage of Cells living: " + pctLivingString);
+    System.out.println("Pct of Cells living: " + pctLivingString);
 
   }
 
@@ -272,7 +310,7 @@ public class CgolExtra
       for(char cell : row){
 
         //count if living cell found
-        if(cell == 'X'){
+        if(cell == ALIVE){
          count++; 
         }     
         
