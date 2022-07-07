@@ -67,7 +67,7 @@ public class Time {
        returns a string representation of the time
     */
     public String toString(){
-	    return("The time is: " + hours + minutes + seconds);
+	    return("The time is: " + hours + ":" + minutes + ":" + seconds);
     }
 
     /**
@@ -79,7 +79,9 @@ public class Time {
     public void set(int hrs, int mins, int secs){
 	// add the code to add the time represented by other
 	// to this instance.
-
+      this.hours = hrs;
+    	this.minutes = mins;
+    	this.seconds = secs;
     }
 
     /**
@@ -93,7 +95,32 @@ public class Time {
 	// add the code to add the time represented by other
 	// to this instance.
 
+      //convert both Time objects -- other and this current one -- to seconds
+      int otherSeconds = other.convertToSeconds();
+      int currentSeconds = convertToSeconds();
+
+      //add up the total seconds
+      int totalSeconds = otherSeconds + currentSeconds;
+
+      //determine the amount of hours, minutes and remaning seconds totalled
+      hours = totalSeconds / 3600;
+      totalSeconds %= 3600;
+
+      minutes = totalSeconds / 60;
+      totalSeconds %= 60;
+
+      seconds = totalSeconds;      
+
     }
+
+    public int convertToSeconds(){
+     
+      return (hours *60 *60) + (minutes*60) + (seconds);
+      
+    }
+
+
+  
 
     /**
        Parameters:
@@ -104,9 +131,10 @@ public class Time {
        false otherwise.
     */
     public boolean equals(Time other){
-	// your code here)
-
-	return false; // change this
+      if(other.hours == hours && other.minutes == minutes && other.seconds == seconds){
+        return true;
+      }
+      return false;      
     }
 
     /**
@@ -124,9 +152,32 @@ public class Time {
 
     */
     public int compareTo(Time other){
-	// your code here)
+      
+      //convert both Time objects -- other and this current one -- to seconds
+      int otherSeconds = other.convertToSeconds();
+      int currentSeconds = this.convertToSeconds();
 
-	return 0; // change this
+      System.out.println("OtherSec: " + otherSeconds);
+      System.out.println("CurrentSec: " + currentSeconds);
+
+      return currentSeconds - otherSeconds;
+      /*
+      //check if this is > other
+      if(currentSeconds > otherSeconds){
+        return 1;        
+      }
+
+      //check if other is > this
+      else if(otherSeconds > currentSeconds){
+        return -1;        
+      }
+      
+      //0 if the two instances represent the same time.
+      else{
+        return 0;
+      }
+      */
+
     }
     
 

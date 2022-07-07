@@ -34,8 +34,29 @@ public class Driver {
     Time t2 = new Time(11,51,9);
 
     //print out the t1 and t2 times
-    System.out.println(t1);
-    System.out.println(t2);
+    System.out.println("T1's time is: " + t1);
+    System.out.println("T2's time is: " + t2);
+
+    //Check if t1 and t2 are the same time
+    System.out.println("Are T1 & T2 the same time? " +  t1.equals(t2));
+
+    //Add some time to T1
+    t1.add(new Time(1,1,1));
+    System.out.println("After adding 1 hour, 1 min, and 1 sec, T1's time is: " + t1);
+
+    //Compare the t1 and t2 times
+    System.out.println("Comparing T1 & T2 times " +  t1.compareTo(t2));
+
+    //Add some time to T1
+    t1.add(new Time(10,50,8));
+    System.out.println("After adding 10 hours, 50 min, and 8 sec, T1's time is: " + t1);
+
+    //Check if t1 and t2 are the same time
+    System.out.println("Are T1 & T2 the same time? " +  t1.equals(t2));
+
+    
+    
+    
     
     
   }//end main()
