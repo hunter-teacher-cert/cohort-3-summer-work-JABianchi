@@ -15,17 +15,30 @@ public class Fence
      eg
      fenceR(1) -> "|"
      fenceR(2) -> "|--|"
+     fenceR(3) -> "|--|--|"
+     fenceR(4) -> "|--|--|--|"
   */
   public static String fenceR( int n )
   {
     /* YOUR SIMPLE, SMART IMPLEMENTATION HERE */
+    
+    String fence="";
+    
+    //BASE CASE: if n is 1, then just get a post, ending with base case
+    if (n==1){
+      return "|";
+    }
+
+    //RECURSIVE CASE: add on a post-dash-dash
+
+    
   }
 
 
   public static void main( String[] args )
   {
 
-    for( int i = 0; i < 10; i++ ) {
+    for( int i = 1; i < 10; i++ ) {
       System.out.println( i + "-post fences: " );
       System.out.println( fenceR(i) );
     }
