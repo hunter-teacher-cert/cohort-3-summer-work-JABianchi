@@ -18,7 +18,7 @@ public class SuperArray
 {
   //instance vars
   private int[] data;           //where the actual data is stored
-  private int numberElements;   //number of "meaningful" elements
+  private int numElements;   //number of "meaningful" elements
 
 
   // ~~~~~~~~~~~~~~~ CONSTRUCTORS ~~~~~~~~~~~~~~~
@@ -26,6 +26,7 @@ public class SuperArray
   public SuperArray( int size )
   {
     data = new int[size];
+    numElements = 0;
   }
 
   //default constructor -- initializes capacity to 10
@@ -39,12 +40,16 @@ public class SuperArray
   public void add( int value )
   {
     // test to see if we need to grow, then grow
-    // SIMPLE VERSION DOES NOT AUTO-GROW CAPACITY; INSERT MORE CODE HERE LATER
+    if(isFull()){
+      grow();
+    }
 
     // add item
-
+    int lastIndex = numElements - 1;
+    data[lastIndex + 1] = value;
 
     // increment numberElements
+    numElements++;
 
 
   }//end add()
@@ -53,12 +58,22 @@ public class SuperArray
   public void add( int index, int value )
   {
     // test to see if we need to grow, then grow
-    // SIMPLE VERSION DOES NOT AUTO-GROW CAPACITY; INSERT MORE CODE HERE LATER
+    if(isFull()){
+      grow();
+    }
 
-    // add item
+    //copy first part of array
 
 
+    
+    //add new item
+    data[index] = value;  
+
+    //copy last part of array
+
+    
     // increment numberElements
+    numElements++;
 
 
   }//end add()
@@ -70,19 +85,36 @@ public class SuperArray
 
   public boolean isEmpty()
   {
-    return true;
+    if(numElements == 0){
+      return true;
+    }
+    return false;
   }
+
+  public boolean isFull(){
+
+    if(numElements == data.length){
+      return true;
+    }
+    return false;
+  }  
 
 
   public int get(int index)
   {
-    return -1;
+    return data[index];
   }
 
 
   public String toString()
   {
-    return "";
+    String out = "Data: [";
+
+    for(int i=0; i<numElements; i++){
+      out += data[i] + " ";
+    }    
+    out += "]";
+    return out;
   }//end toString()
 
 
@@ -91,8 +123,8 @@ public class SuperArray
   {
     String s = "";
     s = "Size: " + this.data.length;
-    s = s + " LastItem: " + numberElements + "  Data: ";
-    for (int i = 0; i < numberElements; i++) {
+    s = s + " LastItem: " + numElements + "  Data: ";
+    for (int i = 0; i < numElements; i++) {
       s = s + data[i] + ", ";
     }
     s = s + "\n";
@@ -102,13 +134,20 @@ public class SuperArray
 
   private void grow()
   {
-    // create a new array with extra space
+    // create a new array with extra space  
     // Q: How did you decide how much to increase capacity by?
+    int additionalElements = 10;
+    int oldLength = data.length;
+    int[] data2 = new int[oldLength + additionalElements];
 
     // copy over all the elements from the old array to the new one
+    for(int i=0; i<oldLength; i++){
+      data2[i] = data[i]; 
+    }
 
     // point data to the new array
     // Q: How does this look when illustrated using encapsulation diagram?
+    data = data2;
 
   }//end grow()
 
