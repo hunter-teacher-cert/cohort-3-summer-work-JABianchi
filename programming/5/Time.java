@@ -1,12 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-
 /**
  * Time class by Team LucidThinkeren
- * Joel Bianchi JABianchi
- * collaborators: First Last, First Last
- */
+ * Saranii muller who understands nothing AT ALL 
+ * collaborators: Kirk Martin, Joel Bianchi, Jessica Novillo
+*/
 
 /**
    INSTRUCTIONS:
@@ -35,17 +34,13 @@ import java.util.*;
 */
 
 
-
 public class Time {
     // Instance Variable(s)
-    // You can change this if you want to use the alternate
-    // implementation of just storing the overall seconds.
-    
     int hours;
     int minutes;
     int seconds;
 
-    // Constructors
+    // Constructor #1: Default Constructor has no parameters
     public Time(){
     	this.hours = 0;
     	this.minutes = 0;
@@ -55,28 +50,25 @@ public class Time {
     /**
        Parameters:
        - hrs, mins, secs - the time you want to create the class as
-
        Initialize this instance to represent hrs:mins:secs as the time.
-       
      */
+    //Constructor #2; takes in 3 different parameters
     public Time(int hrs, int mins, int secs){
 
-	// your code here
+    	this.hours = hrs;
+    	this.minutes = mins;
+    	this.seconds = secs;
 	
     }
     
-    
-    // Methods
+    //Additional Methods
 
     /**
        returns a string representation of the time
     */
     public String toString(){
-	return("This should be changed to return the time in a nice form");
+	    return("The time is: " + hours + minutes + seconds);
     }
-
-
-    
 
     /**
        Parameters:
@@ -90,8 +82,6 @@ public class Time {
 
     }
 
-    
-
     /**
        Parameters:
        - other - a variable of type Time
@@ -104,7 +94,6 @@ public class Time {
 	// to this instance.
 
     }
-
 
     /**
        Parameters:
