@@ -44,7 +44,6 @@ public class CgolExtra
 
   public static boolean isAnimating = true;
   
-  
 
   public static void main( String[] args )
   {
