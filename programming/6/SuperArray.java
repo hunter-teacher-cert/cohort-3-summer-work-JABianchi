@@ -32,6 +32,7 @@ public class SuperArray
   //default constructor -- initializes capacity to 10
   public SuperArray()
   {
+    // "this" calls the overloaded constructor and passes 10 as the size
     this(10);
   }
 
