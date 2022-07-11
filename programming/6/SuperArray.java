@@ -62,24 +62,29 @@ public class SuperArray
       grow();
     }
 
-    //copy first part of array
-
-
-    
-    //add new item
-    data[index] = value;  
-
-    //copy last part of array
-
-    
     // increment numberElements
     numElements++;
 
+    //shift over last part of array after the specified index
+    for(int i= numElements - 1; i > index; i--){
+      data[i] = data[i-1];
+    }
+    
+    //add new item at specified index
+    data[index] = value;  
 
   }//end add()
 
   public void remove(int index){
 
+    //decrement number of elements
+    numElements--;
+
+    //shift to left the elements AFTER the index
+    //traverse from left to right
+    for(int i=index; i<numElements; i++){
+      data[i] = data[i+1]; 
+    }    
     
   }
 
