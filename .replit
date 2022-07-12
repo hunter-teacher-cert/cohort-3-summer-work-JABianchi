@@ -5,5 +5,7 @@ language = "bash"
 #run = "cd programming/3; javac CgolExtra.java; java CgolExtra"
 #run = "cd programming/5; javac GradeDriver.java; java GradeDriver"
 #run = "cd programming/5; javac Driver.java; java Driver"
-run = "cd programming/6; javac SuperArrayDriver.java; java SuperArrayDriver"
+#run = "cd programming/6; javac SuperArrayDriver.java; java SuperArrayDriver"
+run = "cd ds/ArrayList; javac Ds1.java; java Ds1"
+
 
