@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-pubic class Ds1{
+public class Ds1{
 
   public static void main(String[] amber){
 
@@ -13,6 +13,12 @@ pubic class Ds1{
     words.add(1,"somethingelse");
 
     System.out.println(words);
+
+    System.out.println(words.get(0));
+    words.set(0,"notfish");
+    System.out.println(words.get(0));
+    System.out.println(words);
+    System.out.println(words.get(words.size()-1));
     
   }
     
