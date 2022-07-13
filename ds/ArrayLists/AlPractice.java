@@ -66,6 +66,10 @@ public class AlPractice{
     ArrayList<Integer> al4 = sumLists(al2, al3);
     System.out.println("\nThe sum of the elements of al2 and al3 is ArrayList al4:\n" + al4);
 
+    // test out zipLists
+    ArrayList<Integer> al5 = zipLists(al2,al3);
+    System.out.println("\nal2 zipped into al3 is ArrayList al5:\n" + al5);
+
   }
   
   /**
@@ -215,8 +219,24 @@ public class AlPractice{
   Postconditions:
   - The parameter ArrayLists should not be modified.
   */
+  // zipLists "zippers" together 2 lists such that the new list looks like [A0, B0, A1, B1 ... An, Bn]
   public static ArrayList<Integer> zipLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
-    return null;//placeholder to compile.
+
+    //create a new array to hold all the data
+    ArrayList<Integer> zippedArray = new ArrayList<Integer>();
+
+    //copy over all of the elements from ListA
+    for (int i = 0; i < ListA.size(); i++) {
+      zippedArray.add(ListA.get(i));
+    }
+
+    //insert the elements from ListB into all the odd-numbered elements
+    for (int i = 0; i < ListB.size(); i++) {
+      zippedArray.add(2*i+1, ListB.get(i));
+    }
+
+    //return the new ArrayList
+    return zippedArray;
   }
 
 
