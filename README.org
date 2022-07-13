@@ -2,18 +2,6 @@
 * First name: JOEL
 * Github username: JABianchi
 
-* Instructions:
-
-Fill out the top of this form, commit and push it back to GitHub.
-
-For each assignment make a directory as specified in the assignment
-specification. Add the required files, commit and push them up to
-Github.
-
-
-
-
-
 * Resources:
 - [[https://books.trinket.io/thinkjava/][Think Java]]
 - [[https://introcs.cs.princeton.edu/java/][CS - Sedgewick / Wayne]]
