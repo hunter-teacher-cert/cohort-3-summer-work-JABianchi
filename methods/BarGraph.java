@@ -1,3 +1,7 @@
+//Bar Graph activity
+// Programmers: Yenmin Young & Joel Bianchi
+//Testing "Pair Programming Protocol"
+
 public class BarGraph{
   public static void main (String[] avocado){
 
