@@ -29,7 +29,7 @@ public class Node{
     this.data = data;
   }
 
-  public String setNext(Node next){
+  public void setNext(Node next){
     this.next = next;
   }
 

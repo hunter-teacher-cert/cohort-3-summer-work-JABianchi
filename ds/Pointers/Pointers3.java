@@ -24,14 +24,12 @@ public class Pointers3{
     
     //3-2. Create a new Node variable
     // and instantiate it to a new Node with a value of 30.
-    Node p6 = new Node(30);
+    Node p6 = new Node("30");
     
     //3-3. Write the code to insert this new Node between the 10 and the 15
-    //find the 15node
-    Node p3 = p.getNext().getNext();
-    
+
     //point the new p6 node to the 15node
-    p6.setNext( p3 );
+    p6.setNext( p.getNext().getNext() );
     
     //point the 10node to the p6 node
     p.getNext().setNext( p6 );
@@ -42,12 +40,25 @@ public class Pointers3{
   }
 
   //helper method
-  public static void printList(Node p){
+  public static void printList(Node n){
     System.out.println("Checking the setup values");
-    System.out.println(p.getData()); //5
-    System.out.println(p.getNext().getData()); //10
-    System.out.println(p.getNext().getNext().getData()); //15
-    System.out.println(p.getNext().getNext().getNext().getData()); //20
+
+    //keep repeating until you find a null "next Node"
+    while( n.getNext() != null){
+
+      //get the data from the current Node
+      String data = n.getData();
+
+      //print out the data
+      System.out.println(data);
+      
+      //make n point to the next Node in the list
+      n = n.getNext();
+    } 
+
+    //Print the final item
+    System.out.println(n.getData());
+    
 
   }
 
