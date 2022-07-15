@@ -1,6 +1,7 @@
 [Markdown CheatSheet](https://replit.com/talk/learn/A-Quick-Guide-to-Replit-Talk-Markdown/7448)
+### Teachers: Seth Adams, Usman Ahmed, Joel Bianchi, Latoya B
 
-## Lesson objective: Writing Method with Returns to Create a Triangle
+# Lesson objective: Writing Method with Returns to Create a Triangle
 
 ### Aim:SWBAT analyze the rules of triangles in order to create a method that determines if three sides make a triangle. 
 
@@ -12,15 +13,23 @@
 * % operator
 
 ### Warm up
-time:
+Instructions with MEP:  Choose one prompt to respond to:
+* "In your real life, describe one situation when you 'return' something?"
+  
+* Things to consider:
+  * When you get homework from a teacher how do you know what to bring back?
 
----
+* When you are asked to go to the store, how do you know what to return with?
+
+
+
+Discussion Questions:
+* Where are you returning stuff to? Store or Home?
+* method of shopping; if youLike It return false (keep them) if donlt like it retrun t
 
 ### Mini-Lesson
 * What is return?
 * method syntax
-* 
-
 
 ### Check for Understanding
 
@@ -73,6 +82,9 @@ Elicit discussion showing differences between 1-> 2-> 3 (and 4 is wrong)
 
 ### Lesson Activity
 time:
+
+Scaffolding Question:
+* "If you have 2 sticks that are 10" long and 4" long, what size stick could be used to make a triangle?"
 
 ```
 Code Prompt:
