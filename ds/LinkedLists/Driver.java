@@ -15,7 +15,31 @@ public class Driver{
 
     System.out.println("\nThe Node at index 1 is: " +  l.get(1) );
     System.out.println("The Node at index 10 is: " + l.get(10) );
-    
+
+    System.out.print("\nThe size of the LinkedList is: ");
+    System.out.println(l.size());
+
+    System.out.println("\nAdding 'Holly' node to index 2: ");
+    l.add(2, "Holly");
+    System.out.println(l);
+
+    System.out.println("\nAdding 'Juniper' node to index 0: ");
+    l.add(0, "Juniper");
+    System.out.println(l);
+
+    System.out.println("\nAdding 'Windy' node to index -1: ");
+    l.add(-1, "Windy");
+    System.out.println(l);
+
+    System.out.println("\nAdding 'Windy' node to index 9: ");
+    l.add(9, "Windy");
+    System.out.println(l);
+
+    System.out.println("\nWhat index is 'Holly' at? ");
+    System.out.println(l.indexOf("Holly"));
+
+    System.out.println("\nWhat index is 'Windy' at? ");
+    System.out.println(l.indexOf("Windy"));
     
   }
 }

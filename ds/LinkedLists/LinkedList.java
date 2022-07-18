@@ -10,29 +10,35 @@ import java.util.*;
 Basic
 -----
 + add(string value)
-- get(int index);
-- toString()
++ get(int index)
++ toString()
 
 Intermediate 
 ------------
-- size()
-- add(int index,String value)
++ size()
++ add(int index,String value)
 - indexOf(String value);
 - toArray()
 
 Challenge
 --------
 - remove(int index);
+
+Helper
+------
++ getNode(int index)
 */
 
 public class LinkedList{
 
   private Node head;
+  private int numElements = 0;
 
   public LinkedList(){
     head = null;
   }
 
+  
   // add() adds a new node that points to the head, and makes the new node the new head
   public void add(String value){
 
@@ -41,8 +47,12 @@ public class LinkedList{
 
     //make the new node the new head
     head = front;
+
+    //update the variable tracking the size
+    numElements++;
   }
 
+  
 // get() returns the string at the node in the specified index
   public String get(int targetIndex){
 
@@ -66,6 +76,7 @@ public class LinkedList{
     return "Value at index not found.";
   }
 
+   
  // toString() returns a string version of the list
   public String toString(){
     
@@ -92,48 +103,102 @@ public class LinkedList{
   }
 
   
+  //sizeOriginal() returns the number of elements in the list by counting
+  public int sizeOriginal(){
+    //initialize a counter variable for the number of elements
+    int numElements = 0;
 
-  /**
-  returns the number of elements in the list
-  */
+    //create a walker
+    Node walker = head;
+    
+    //keep going through the linkedlist until reaching a null
+    while (walker != null) {
+
+      //counter++
+      numElements++;
+      
+      //move walker on to the next node
+      walker = walker.getNext();
+    } 
+
+    //return counter
+    return numElements;
+  }
+
+  
+  //size() returns the number of elements in the list
   public int size(){
-    return 0;
+    return numElements;
   }
 
 
-
-  /**
-  Parameters:
-  index - an int with the location to add
-  value - the new value
-
-  Adds a new node with the String value to the list.
-  The new node should be added at the location specified by the index.
-
-  For example, given the list:
-  "a" -> "b" -> "c" -> "d"
-
-  add(1,"z") results in:
-  "a"-> "z" -> "b" -> "c" -> "d"
-
-  */
+//add(int, String) adds the string value at given index
   public void add(int index, String value){
 
+    //EDGE CASE 1: The user wants to add at index 0
+    if (index == 0) {
+      add(value);
+    } 
+
+    //EDGE CASE 2: The user tries an index that's too big or negative
+    else if (index > numElements - 1 || index < 0) {
+      System.out.println("Error!  Cannot add: index is out of range!");
+    }
+
+    //VALID CASE: User provides a valid non-zero index
+    else {
+      //create the new node & point the new node to the node at the current index
+      Node newNode = new Node(value, getNode(index));  //Holly point to Rach
+
+      //get the previous node (index-1) and set the new node as its next node
+      getNode(index-1).setNext(newNode);    //Latoya to point to Holly
+      
+      //update the variable tracking size of list  
+      numElements++;
+    }
+  }
+  
+  //LinkedList class helper method
+  // getNode() returns the node in the specified index
+  public Node getNode(int targetIndex){
+
+    //create reference to help loop through list
+    Node walker = head;
+    
+    //go in a loop through each node until we reach the target index
+    for(int i=0; i<=targetIndex && walker != null; i++ ){
+      
+      //if we have reached the target index
+      if (i == targetIndex){
+        //return the NODE from the target
+        return walker;
+      }
+      
+      //if (walker.getNext() != null) 
+      walker = walker.getNext();
+      
+    }
+    //return if we didn't find the target index
+    return null;
   }
 
 
-  /**
-  Returns the index (location) of the first node in the list
-  that contains value.
-
-  Example:
-  Given the list:
-  "a"->"b"->"c"->"d"->"e"
-  indexOf("d") would return 3 since "d" is at location 3.
-
-  */
+// indexOf() returns the location of the first instance of value
   public int indexOf(String value){
-    return 0;
+    
+    //for loop i=0 i<size of the list
+    for (int i=0; i<numElements; i++){
+
+      //if item at that location == value
+      if ( get(i) == value ){
+
+        // return i
+        return i;
+      }        
+    }
+
+    //return if the value isn't in the list anywhere
+    return -1;
   }
 
 
@@ -146,6 +211,10 @@ public class LinkedList{
 
   */
   public String[] toArray(){
+    //new array using size()
+    //for i = 0 up to size and next item isn't null
+    ////array[i] = walker val
+    ////walker moves to next?
     return null;
   }
 
@@ -163,6 +232,9 @@ public class LinkedList{
   "a"->"b"->"d"->"e"
   */
   public void remove(int index){
+
+    //update the variable tracking size of list
+    numElements--;
   }
   
 }
