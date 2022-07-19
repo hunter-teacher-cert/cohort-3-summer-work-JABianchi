@@ -1,0 +1,78 @@
+Joel Bianchi
+Team 11 :: Rich Parker, Joshua Higgins, Joel Bianchi, A Cassara
+Methods - Summer 2022
+
+CODE TRACING in the classroom
+======================================
+
+
+PROS:
+---------------------------------------
+<general positive aspects of incorporating code or algorithm tracing into a CS course, from your perspective>
+
+* Troubleshooting 
+* Tracking variables
+* Visualization
+* Great for linking flowcharts to code visualization.
+
+CONS:
+---------------------------------------
+<general negative aspects of incorporating code or algorithm tracing into a CS course, from your perspective>
+
+* Can become overwhelming if there are too many conditionals/branches. Limited to 2-D representations (usually) in classroom.
+
+* Open to human error.
+
+BEST FOR:
+---------------------------------------
+<types of activities from courses you teach or have taught that could benefit from an emphasis on tracing>
+
+* Debugging code that's not working
+* Trying to understand someone else's working code
+* Explaining code to help group members understand code
+
+
+LEAST-SUITED TO:
+---------------------------------------
+<opposite of above -- and why>
+
+* Machine learning activities
+* Code far below the level currently at
+
+PROVEN PRO-TIPS:
+---------------------------------------
+<
+ anything that has worked well for any member of your team, in the way of ...
+ * live tracing ("trace-along" a la livecoding)
+ * tracing as an assignment
+ * tools, physical/online/otherwise that make it easier/clearer
+ * etc
+>
+
+* Color coordination great for iteration or recursion moments.
+* Vertical and/or horizontal alignment important for "flow of time" and/or return statement representation.
+
+RESOURCES:
+---------------------------------------
+< any links, reading titles, names, etc. you have find useful >
+* Notability (https://notability.com/)
+* Flowchart relations in AP CSP (https://apcentral.collegeboard.org/media/pdf/ap-computer-science-principles-course-and-exam-description.pdf)
+
+OTHER:
+---------------------------------------
+< anything you like, not already covered in prior prompts. >
+
+* Boxes & Arrows Tracing
+  ** code with multiple variables
+  
+* Table Tracing
+  ** for loops
+  ** nested for loops
+
+* Stack Tracing
+  ** Recursion questions
+
+* Expression Expansion Tracing
+  ** More complex recursion
+
+
