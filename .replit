@@ -11,6 +11,7 @@ language = "bash"
 #run = "cd ds/Pointers; javac Pointers3.java; java Pointers3"
 #run = "cd ds/Pointers; javac Driver.java; java Driver"
 #run = "cd methods; javac BarGraph.java; java BarGraph"
-run = "cd ds/LinkedLists; javac Driver.java; java Driver"
+#run = "cd ds/LinkedLists; javac Driver.java; java Driver"
 #run = "cd methods/03; javac Gcd.java; java Gcd"
+run = "cd ds/Sorting; javac SortSearchDriver.java; java SortSearchDriver"
 
