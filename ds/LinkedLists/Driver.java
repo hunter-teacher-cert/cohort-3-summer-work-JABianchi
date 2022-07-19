@@ -40,6 +40,21 @@ public class Driver{
 
     System.out.println("\nWhat index is 'Windy' at? ");
     System.out.println(l.indexOf("Windy"));
-    
+
+    System.out.println("\nAdding 'Windy' node to index 9: ");
+    l.add(9, "Windy");
+    System.out.println(l);
+
+    System.out.println("\nRemoving what's at index 3: ");
+    l.remove(3);
+    System.out.println(l);
+
+    System.out.println("\nRemoving what's at index 0: ");
+    l.remove(0);
+    System.out.println(l);
+
+    String[] arr = l.toArray();
+    System.out.println("\nWhat does the LinkedList look like as a String array?");
+    System.out.println(Arrays.toString(arr));
   }
 }
