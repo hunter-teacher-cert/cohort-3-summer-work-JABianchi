@@ -2,8 +2,9 @@ import java.io.*;
 import java.util.*;
 
 /*
-Team 11
-Collaborators: J. Bianchi, A. Cassara, J. Higgins, R. Parker
+Joel Bianchi
+SORTING: Team 11 Collaborators: A. Cassara, J. Higgins, R. Parker
+SEARCHING: Team 12 jihae park ("G")  acassara ("Cassara")	mthomas
 */
 
 /*
@@ -59,7 +60,7 @@ public class SortSearch{
 
     //create 'size' random numbers from 0 - 19
     for (int i = 0; i < size; i++){
-        data.add(r.nextInt(20));
+        data.add(r.nextInt(10));
     }
 
   }
@@ -114,25 +115,17 @@ public class SortSearch{
   ArrayList data in place.
   */
   public void sort(){
-    
-    // Loop a variable that represents the ArrayList index
-    // from 0 to the end of the ArrayList.
-    int smallest;
-    
+  
+    // Loop a variable, i, through the ArrayList
     for (int i = 0; i < data.size(); i++){
           
-      //get the index of the smallest value
-      //from i to the end of the array 
-      //if (data.get(i) < )
+      // get the index of the smallest value to the right of i
+      int smallest = findSmallestIndex(i);
 
-          
+      // swap i with the smallest index  
+      Collections.swap(data, i, smallest);
        
-       
-     }
-    
-    //swap it with that index.
-
-    
+     }    
   }
 
 
@@ -151,23 +144,63 @@ public class SortSearch{
   */
   public int linearSearch(int value){
 
+    //loop through all the indices in order
+    for(int i=0; i<data.size(); i++){
 
-    return 0; // replace this return
+      //check for target value at each index
+      if(data.get(i) == value){
+
+        //return the index if the value is found
+        return i;
+      }
+    }
+
+    //return -1 if the index was not found
+    return -1;
   }
     
   /**
   Implement a binary search as specified by the comments   
   This algorithm only works on sorted ArrayLists.
   */
-  public int binarySearch(int value){
+  public int binarySearch(int targetValue){
 
     // create assign variables representing the high,
-    // low and middle indices 
-    // while we're not done:
-    //   if the item is at data.get(middle), return middle
-    //   otherwise, update high, low, and middle
+    // low and middle indices
+    int lo = 0;
+    int hi = data.size() - 1;
+    int mid = (hi+lo)/2;
     
-    return 0;
+    // while we're not done
+    while( lo != hi ){
+
+      //Print out the values of lo:mid:hi for each loop
+      System.out.println(lo + ":" + mid + ":" + hi);
+      
+      //see the value of the middle
+      int checkMid = data.get(mid);
+      
+      // if the targetValue is in the middle, return mid index
+      if(targetValue == checkMid){
+        return mid;
+      } 
+
+      // if target is below, move hi down
+      else if(targetValue < checkMid){
+        hi = mid - 1;
+      }
+
+      // if target is above, move lo up
+      else if(targetValue > checkMid){
+        lo = mid + 1;
+      }
+
+      //update the new mid
+      mid = (hi+lo)/2;
+    }
+
+    //return -1 if you didn't find the targetValue
+    return -1;
     
   }
     
@@ -178,11 +211,32 @@ public class SortSearch{
     This algorithm only works on sorted ArrayLists.
   */
 
-  public int binarySearchRecursive(int value, int lowIndex,
-                                   int highIndex){
+  public int binarySearchRecursive(int targetValue, int lo,
+                                   int hi){
+    //find the mid
+    int mid = (hi + lo)/2;
+    int midValue = data.get(midValue);
+    
+    //BASE CASE 1: Found the value
+    if(targetValue == midValue){
+      return mid;
+    }
 
-    // refer to class discussion
-  
+    //BASE CASE 2: Value not found
+    if(hi == lo){
+      return -1;
+    }
+    
+    //RECURSIVE CASE 1: targetValue is higher
+    if(targetValue > midValue){
+      binarySearchRecursive(targetValue, mid+1, hi);
+    }
+
+    //RECURSIVE CASE 2: targetValue is lower
+    if(targetValue < midValue){
+      binarySearchRecursive(targetValue, lo, mid-1);      
+    }
+    
     return 0;
     
   }
