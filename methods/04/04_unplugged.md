@@ -6,6 +6,7 @@ Roster: Parmanand Mohanlall, Joel Bianchi, Erwin Lara, Maxwell Yearwood
 
 ### Main Idea
 Activity to discover different sorting & searching algorithms
+(Especially useful for mergeSort)
 
 ![](https://www.tcsjohnhuxley.com/wp-content/uploads/2018/04/A_Plus_Shuffler-150x150.jpg)
 
@@ -24,8 +25,8 @@ optionally with some treatment of how necessary each pre-req is..._
 ### Scaffolding / Differentiation 
 _an aspect of this activity well-suited to tiering / scaffolding / differentiation_
 * ELLs - standard card deck vocab
-  * Numbers: Jack, Queen, King, Ace
-  * Suits: Clubs, Spades, Diamonds, Hearts 
+  * Numbers: Jack🂫, Queen🂭, King🂬, Ace🂡
+  * Suits: Clubs♣, Spades♠, Diamonds♢, Hearts♡ 
 * Adjust level of difficulty by handing out increasing the number of decks of cards
 * "Extreme fun form": have specific groups face off
 * Part 2: Different ways of ordering:
