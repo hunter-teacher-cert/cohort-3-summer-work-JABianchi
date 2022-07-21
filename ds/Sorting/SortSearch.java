@@ -171,8 +171,11 @@ public class SortSearch{
     int hi = data.size() - 1;
     int mid = (hi+lo)/2;
     
+    //Print out the values of lo:mid:hi for each call
+    System.out.println(lo + ":" + mid + ":" + hi);
+    
     // while we're not done
-    while( lo != hi ){
+    while( lo <= hi ){
 
       //Print out the values of lo:mid:hi for each loop
       System.out.println(lo + ":" + mid + ":" + hi);
@@ -213,9 +216,13 @@ public class SortSearch{
 
   public int binarySearchRecursive(int targetValue, int lo,
                                    int hi){
+    
     //find the mid
     int mid = (hi + lo)/2;
-    int midValue = data.get(midValue);
+    int midValue = data.get(mid);
+
+    //Print out the values of lo:mid:hi for each call
+    System.out.println(lo + ":" + mid + ":" + hi);
     
     //BASE CASE 1: Found the value
     if(targetValue == midValue){
@@ -223,21 +230,20 @@ public class SortSearch{
     }
 
     //BASE CASE 2: Value not found
-    if(hi == lo){
+    else if(hi == lo){
       return -1;
     }
     
     //RECURSIVE CASE 1: targetValue is higher
-    if(targetValue > midValue){
-      binarySearchRecursive(targetValue, mid+1, hi);
+    else if(targetValue > midValue){
+      return binarySearchRecursive(targetValue, mid+1, hi);
     }
 
     //RECURSIVE CASE 2: targetValue is lower
-    if(targetValue < midValue){
-      binarySearchRecursive(targetValue, lo, mid-1);      
+    else {
+      return binarySearchRecursive(targetValue, lo, mid-1);      
     }
-    
-    return 0;
+
     
   }
     
@@ -249,6 +255,10 @@ public class SortSearch{
 
   public void builtinSort(){
     Collections.sort(data);
+  }
 
+  //helper method 
+  public int size(){
+    return data.size();
   }
 }
