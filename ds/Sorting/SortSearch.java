@@ -33,7 +33,8 @@ public class SortSearch{
     private ArrayList<Integer> data;  // to store the data
     
     private Random r; 
-
+    private int maxInt = 20;
+    boolean printsOn = false;
 
   // Constructor #1: Default
   public SortSearch(){
@@ -43,9 +44,9 @@ public class SortSearch{
     // generates a random number generator
     r = new Random();
 
-    // create 15 random numbers from 0 - 19
+    // create 15 random numbers from 0 -> maxInt
     for (int i = 0; i < 15; i++){
-        data.add(r.nextInt(20));
+        data.add(r.nextInt(maxInt));
     }
 
   }
@@ -58,9 +59,21 @@ public class SortSearch{
     // generates a random number generator
     r = new Random();
 
-    //create 'size' random numbers from 0 - 19
+    //create 'size' random numbers from 0 - maxInt
     for (int i = 0; i < size; i++){
-        data.add(r.nextInt(10));
+        data.add(r.nextInt(maxInt));
+    }
+
+  }
+
+  //Constructor #3: Generate a ordered list
+  public SortSearch(int size, boolean ordered){
+    // creates new ArrayList of integers  
+    data = new ArrayList<Integer>(size);
+
+    //create ordered numbers from 0 - 'size'
+    for (int i = 0 ; i < size; i++){
+      data.add(i);
     }
 
   }
@@ -172,13 +185,17 @@ public class SortSearch{
     int mid = (hi+lo)/2;
     
     //Print out the values of lo:mid:hi for each call
-    System.out.println(lo + ":" + mid + ":" + hi);
+    if(printsOn){
+      System.out.println(lo + ":" + mid + ":" + hi);
+    }
     
     // while we're not done
     while( lo <= hi ){
 
       //Print out the values of lo:mid:hi for each loop
-      System.out.println(lo + ":" + mid + ":" + hi);
+      if(printsOn){
+        System.out.println(lo + ":" + mid + ":" + hi);
+      }
       
       //see the value of the middle
       int checkMid = data.get(mid);
@@ -222,7 +239,9 @@ public class SortSearch{
     int midValue = data.get(mid);
 
     //Print out the values of lo:mid:hi for each call
-    System.out.println(lo + ":" + mid + ":" + hi);
+    if(printsOn){
+      System.out.println(lo + ":" + mid + ":" + hi);
+    }
     
     //BASE CASE 1: Found the value
     if(targetValue == midValue){
@@ -260,5 +279,9 @@ public class SortSearch{
   //helper method 
   public int size(){
     return data.size();
+  }
+
+  public void setPrintsOn(boolean b){
+    printsOn = b;
   }
 }
