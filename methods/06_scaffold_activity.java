@@ -1,4 +1,4 @@
-public class 06_scaffold_arrays{
+public class 06_scaffold_activity{
 
   public static void main(String[] ants ){
 
