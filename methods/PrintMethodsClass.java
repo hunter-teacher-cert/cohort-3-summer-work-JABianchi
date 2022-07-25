@@ -1,4 +1,4 @@
-//public class 06_scaffold_activity{
+//public class 06_scaffold_solution{
 public class PrintMethodsClass {
 
   public static void main(String[] ants ){
@@ -22,12 +22,14 @@ public class PrintMethodsClass {
   public static void printLetters(String word){
 
     //loop through each letter in the String
+    for(int i=0; i<word.length(); i++){
 
       //get each letter
-
+      String letter = word.substring(i,i+1);
+      
       //print each letter
-
-    
+      System.out.print(letter);
+    }
   }
   
   //1b. Print all the elements of the array

@@ -13,7 +13,10 @@ language = "bash"
 #run = "cd methods; javac BarGraph.java; java BarGraph"
 #run = "cd ds/LinkedLists; javac Driver.java; java Driver"
 #run = "cd methods; javac Gcd.java; java Gcd"
-#run = "cd ds/Sorting; javac SortSearchDriver.java; java SortSearchDriver"
-run = "cd methods; javac 06_scaffold_activity.java; java 06_scaffold_activity"
+run = "cd ds/Sorting; javac SortSearchDriver.java; java SortSearchDriver"
+#run = "cd methods; javac 06_scaffold_activity.java; java 06_scaffold_activity"
+#run = "cd methods; javac ErwinAnand.java; java ErwinAnand"
+#run = "cd methods; javac PrintMethodsClass.java; java PrintMethodsClass"
+
 
 
