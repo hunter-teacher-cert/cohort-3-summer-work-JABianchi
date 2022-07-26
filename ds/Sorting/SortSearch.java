@@ -307,7 +307,7 @@ public class SortSearch{
       int j = 0;
 
       //keep looping until at the end of both lists
-      while(i<list1.size() && j<list2.size){
+      while(i<list1.size() && j<list2.size()){
         
         // Case 1: if at the end of list1, pull from list2
 

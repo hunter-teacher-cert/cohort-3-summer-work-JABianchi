@@ -1,0 +1,35 @@
+Joel Bianchi
+Methods Summer 2022
+GALLERY TOUR LOG
+
+====================================================
+DISCOVERIES (any cool tips/tricks/hacks learned):
+* Jekyll templates add extra links
+* Special characters are still displayed in the html
+
+LINGERING QUESTIONS:
+* I still would like to figure out best use cases for local Jekyll 
+* How to make the cool code boxes (Marieke & Kate)
+
+COMMENTS/CONCERNS/OTHER:
+* 1 per line, please
+
+====================================================
+NOTABLE SITES:
+-------------------------------------
+notable site:
+https://kmaschm.github.io/nycscertweb/
+notable aspect:
+Each class is linked to its own page
+-------------------------------------
+notable site:
+https://jenna0704.github.io/nycscertweb/
+notable aspect:
+Great use of tables
+-------------------------------------
+notable site:
+https://marieke-thomas.github.io/nycscertweb/
+notable aspect:
+Shadows behind text boxes, very clean layout
+
+
