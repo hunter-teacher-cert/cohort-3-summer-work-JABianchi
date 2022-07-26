@@ -7,8 +7,8 @@ public class SortSearchDriver {
   public static long elapsed = 0;
 
   //How big should the list be?
-  //public static int size = 100000;  // the number of elements in data
-  public static int size = 12000000;  //largest? number that can fit in memory in replit
+  public static int size = 100000;  // the number of elements in data
+  //public static int size = 12000000;  //largest? number that can fit in memory in replit
 
   
   public static void main(String[] args) {
@@ -43,7 +43,7 @@ public class SortSearchDriver {
   	System.out.println("ss["+ i + "] = "+ss.get(i));
   	
   	//Test SELECTION SORT
-    if(size < 100001){  //only sort if replit can handle the size in a reasonable amount of time
+    if(size < 500001){  //only sort if replit can handle the size in a reasonable amount of time
     	System.out.println("\nUse selection sort on ss:");
       startTimeTest();
     	ss.sort();
@@ -85,6 +85,36 @@ public class SortSearchDriver {
     } else {
       System.out.println("found at index " + found3);
     }
+
+    //Test MERGING METHODS
+    // System.out.println("\n New list4 ArrayList with a size of " + 3);
+    // ArrayList<Integer> list4 = ss.buildIncreasingList(3);
+    // System.out.println(list4);
+
+    // System.out.println("\n New list5 ArrayList with a size of " + 3);
+    // ArrayList<Integer> list5 = ss.buildIncreasingList(3);
+    // System.out.println(list5);
+    
+    // System.out.println("\nMerging list4 & list5 into a new list6:");
+    // ArrayList<Integer> list6 = ss.merge(list4, list5);
+    // System.out.println(list6);
+
+    //MERGESORT TEST
+    System.out.println("\nCreate a new set of data called ss2 of size " + size);
+    SortSearch ss2 = new SortSearch(size);
+    printList(ss2);
+    System.out.println("\nDoing a MERGE SORT on ss2 ArrayList:");
+    startTimeTest();
+    ss2.msort();
+    endTimeTest();
+    printList(ss2);
+    
+    
+    
+
+    
+
+    
 
 	      
 

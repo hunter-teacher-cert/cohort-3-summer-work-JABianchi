@@ -296,7 +296,7 @@ public class SortSearch{
        [1, 3, 5, 6, 10, 17, 25, 30, 40, 50]
        
     */    
-    public ArrayList<Integer> merge( ArrayList<Integer> list1,
+     public ArrayList<Integer> merge( ArrayList<Integer> list1,
 				    ArrayList<Integer> list2){
       
       //create a new ArrayList list3 to hold the values from list1 & list2 
@@ -306,37 +306,101 @@ public class SortSearch{
       int i = 0;
       int j = 0;
 
+      // CASE 1: add the smaller element from one of the lists
       //keep looping until at the end of both lists
-      while(i<list1.size() && j<list2.size()){
-        
-        // Case 1: if at the end of list1, pull from list2
-
-        
-        // Case 2: if at the end of list2, pull from list1
-
-        
-        // Case 3: otherwise, compare an element from each list
-
-          //pick the smaller number
-
+      while(i < list1.size() && j < list2.size()){
+      
+        //check if list1's element is smaller
+        if(list1.get(i) < list2.get(j)){
 
           //add it to the new list
+          list3.add(list1.get(i));
 
-
-          //increment i or j appropriately
-
+          //increment i appropriately
+          i++;
+        }
         
+        //check if list2's element is smaller
+        else{
+          
+          //add it to the new list
+          list3.add(list2.get(j));
+          
+          //increment j appropriately
+          j++;
+        }
+
+      }
+
+      // Case 2: if at the end of list1, pull from list2
+      while(j < list2.size()){
+        
+          //add it to the new list
+          list3.add(list2.get(j));
+          
+          //increment j appropriately
+          j++;
+      }
+
+      // Case 3: if at the end of list2, pull from list1
+      while(i < list1.size()){
+        
+          //add it to the new list
+          list3.add(list1.get(i));
+          
+          //increment i appropriately
+          i++;
       }
 
       //return the new list 
       return list3;
     }
 
-
-
+public ArrayList<Integer> mergeSort(ArrayList<Integer> list){
   
+    //BASE CASE: if the number of elements is less than 2, then stop doing recursion!
+    if(list.size() < 2)
+      return list;
+
+    //RECURSIVE CASES: split in two lists
+    int middle = list.size() / 2;
     
-	
+    //fill up the left ArrayList from 0 to middle
+    ArrayList<Integer> left = new ArrayList<Integer>();
+    for(int i = 0; i < middle; i++){
+      left.add(list.get(i));
+    }
+ 
+    //fill up the right ArrayList from middle to the end
+    ArrayList<Integer> right = new ArrayList<Integer>();
+    for(int i = middle; i < list.size(); i++){
+      right.add(list.get(i));
+    }
+    
+    // mergeSort the left half
+    if(printsOn) System.out.println("LEFT-PRE\t" + left);
+    left = mergeSort(left);
+    if(printsOn) System.out.println("LEFT-POST\t" + left);
+    
+    // mergeSort the right half
+    if(printsOn) System.out.println("RIGHT-PRE\t" + right);
+    right = mergeSort(right);
+    if(printsOn) System.out.println("RIGHT-POST\t" + right);
+  
+    // merge them together into a new list & return
+    return merge(left, right);
+
+  }
+
+
+  public void msort(){
+      data =  mergeSort(data);
+  }
+
+
+
+    
+/* ------- HELPER  METHODS -------- */	
   public String toString(){
     return ""+data;
   };
