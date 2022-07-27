@@ -45,7 +45,7 @@ public class TreeDriver{
     System.out.println("Should print out the same thing as the comments in the source code:");
 
     System.out.println(a);
-    System.out.println(b);
+    System.out.println(a);
     System.out.println(c);
     System.out.println(d);
 
