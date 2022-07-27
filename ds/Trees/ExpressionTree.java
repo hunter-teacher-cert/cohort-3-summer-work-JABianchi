@@ -91,7 +91,18 @@ public class ExpressionTree{
       //return our string
       return cast;
     }
-  
+
+  public String toStringPrefix(){
+
+    //determine the size of the diagram
+
+    //Create an Array of Strings for each level to be printed
+
+    //
+
+    return "notYet";
+    
+  }  
 
   //Return true when the node is a value, false when it is an operator
   //when the children are null, the current tree is a value
