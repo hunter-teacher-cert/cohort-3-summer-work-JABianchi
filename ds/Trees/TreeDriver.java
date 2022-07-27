@@ -38,12 +38,18 @@ public class TreeDriver{
 
     //2. Trees with children
     //These need to be evaluated:
-    /**
     ExpressionTree a = new ExpressionTree('+',one,one);//2.0  "(1.0 + 1.0)"
     ExpressionTree b = new ExpressionTree('-',five,ten);//-5.0 "(5.0 - 10.0)"
     ExpressionTree c = new ExpressionTree('*',three,four);//12.0 "(3.0 * 4.0)"
     ExpressionTree d = new ExpressionTree('/',one,two);//0.5 "(1.0 / 2.0)"
     System.out.println("Should print out the same thing as the comments in the source code:");
+
+    System.out.println(a);
+    System.out.println(b);
+    System.out.println(c);
+    System.out.println(d);
+
+/*
     System.out.println(a.toString() + " is equal to " + a.evaluate());
     System.out.println(b.toString() + " is equal to " + b.evaluate());
     System.out.println(c.toString() + " is equal to " + c.evaluate());
