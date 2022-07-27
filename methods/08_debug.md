@@ -29,7 +29,7 @@
 |12|   |   |
 
 
-### How to Troubleshooting Tips:
+### How to Troubleshoot Tips:
 * Read error messages in the console to see what line the error occured.
 * Indent all of the curly braces properly to see if any structures are missing any.
 * Click on a curly brace to see where it is being matched to.
