@@ -8,14 +8,14 @@ public class ExpressionTree{
   private ExpressionTree left,right;
   private char operator;
 
-  //Tree can be a value
+  //Constructor #1: Tree can be a value
   public ExpressionTree(double val){
    value = val;
    left = null;
    right = null;
   }
 
-  //Tree can be an operator that connects two sub-trees
+  //Constructor #2: Tree can be an operator that connects two sub-trees
   public ExpressionTree(char op, ExpressionTree l, ExpressionTree r){
     operator = op;
     left = l;
@@ -28,18 +28,29 @@ public class ExpressionTree{
     public double evaluate(){
 
       //initialize a double to be returned later
-
+      double result = 0.0;
       
       // BASE CASE: no children, only a value
-      // return the value
+      if(isValue()){
+        
+        // return only the value
+        result = value;
+      }
       
       // RECURSIVE CASE:
-      // evaluate left side
-      // evaluate right side
-      // do the operation
-
+      else{
+        // evaluate left side
+        double leftSide = left.evaluate();
+        
+        // evaluate right side
+        double rightSide = right.evaluate();
+        
+        // do the operation
+        result = apply(leftSide, rightSide, operator);
+      }
       
-      return 10000000000000.0;//replace this
+      //return the double
+      return result;
     }
 
     //You must write this method:
@@ -61,7 +72,6 @@ public class ExpressionTree{
       if(isValue()){
         // return the value (i.e. 10)
         cast += value;
-       
       }
       
       // RECURSIVE CASE:
