@@ -43,10 +43,10 @@ public class TreeDriver{
     System.out.println(ten.evaluate()==10.0);
     
     System.out.println("\nTesting evaluate() on trees with children");
-    System.out.println(a.toString() + " is equal to " + a.evaluate());
-    System.out.println(b.toString() + " is equal to " + b.evaluate());
-    System.out.println(c.toString() + " is equal to " + c.evaluate());
-    System.out.println(d.toString() + " is equal to " + d.evaluate());
+    System.out.println("a tree: " + a + " is equal to " + a.evaluate());
+    System.out.println("b tree: " + b + " is equal to " + b.evaluate());
+    System.out.println("c tree: " + c + " is equal to " + c.evaluate());
+    System.out.println("d tree: " + d + " is equal to " + d.evaluate());
 
 
     //3. Multi level trees which need to be evaluated:
@@ -54,14 +54,15 @@ public class TreeDriver{
     ExpressionTree e = new ExpressionTree('/',c,two);
     ExpressionTree f = new ExpressionTree('-',c,ten);
     ExpressionTree g = new ExpressionTree('+',b,c);
-    ExpressionTree h = new ExpressionTree('*',a,d);
-    ExpressionTree i = new ExpressionTree('+',h,one);
+    ExpressionTree h = new ExpressionTree('*',a,e);
 
-    System.out.println(e.toString() + " is equal to " + e.evaluate());
-    System.out.println(f.toString() + " is equal to " + f.evaluate());
-    System.out.println(g.toString() + " is equal to " + g.evaluate());
-    System.out.println(h.toString() + " is equal to " + h.evaluate());
-    System.out.println(i.toString() + " is equal to " + i.evaluate());
+
+    System.out.println("e tree: " + e + " is equal to " + e.evaluate());
+    System.out.println("f tree: " + f + " is equal to " + f.evaluate());
+    System.out.println("g tree: " + g + " is equal to " + g.evaluate());
+    System.out.println("h tree: " + h + " is equal to " + h.evaluate());
+
+    
     /** expected output:
     ((3.0*4.0)/2.0) is equal to 6.0
     ((3.0*4.0)-10.0) is equal to 2.0
@@ -70,11 +71,30 @@ public class TreeDriver{
     (((1.0+1.0)*(1.0/2.0))+1.0) is equal to 2.0
     */
 
+    //TOSTRING PREFIX
+    System.out.println("\nTesting alternate toStringPrefix() method:");
+    System.out.println(f.toStringPrefix());
+    System.out.println(g.toStringPrefix());
+    System.out.println(h.toStringPrefix());
+
+
+    //ADDITIONAL OPERATORS
+    System.out.println("\nTesting additional operators ^ and s :");
+    ExpressionTree i = new ExpressionTree('^',g,two);
+    ExpressionTree j = new ExpressionTree('s',i);
+    System.out.println("i tree: " + i + " is equal to " + i.evaluate());
+    System.out.println("j tree: " + j + " is equal to " + j.evaluate());
+    
+
+    //TREE DIAGRAM
     System.out.println("\nTesting in ExpressionTree Diagrams");
-    System.out.println(f.toString() + ":\n" + f.toStringPrefix());
-    System.out.println(g.toString() + ":\n" + g.toStringPrefix());
-    System.out.println(h.toString() + ":\n" + h.toStringPrefix());
-    System.out.println(i.toString() + ":\n" + i.toStringPrefix());    
+
+    System.out.println(one.toString());
+    one.printDiagram();
+
+    
+    System.out.println(f.toString());
+    f.printDiagram();
 
   }
 }

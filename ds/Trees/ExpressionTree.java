@@ -22,6 +22,13 @@ public class ExpressionTree{
     right = r;
   }
 
+  //Constructor #3: Tree with 1 operator and 1 subtree
+  public ExpressionTree(char op, ExpressionTree l){
+    operator = op;
+    left = l;
+    right = null;
+  }
+
 
    //You must write this method:
     //Calculate the value of the entire tree
@@ -36,8 +43,15 @@ public class ExpressionTree{
         // return only the value
         result = value;
       }
+
+      // RECURSIVE CASE 1: 1 child
+      else if(right == null){
+        
+        // return only the value
+        result = apply(left.evaluate(), 0.0, operator);
+      }
       
-      // RECURSIVE CASE:
+      // RECURSIVE CASE 2: 2 children
       else{
         // evaluate left side
         double leftSide = left.evaluate();
@@ -74,7 +88,12 @@ public class ExpressionTree{
         cast += value;
       }
       
-      // RECURSIVE CASE:
+      // RECURSIVE CASE 1: 1 child
+      else if(right == null){
+        cast += "(" + left + " " + operator + ")";
+      }
+        
+      // RECURSIVE CASE 2: 2 children
       else{
         // Add a (
         cast += "(";
@@ -92,18 +111,91 @@ public class ExpressionTree{
       return cast;
     }
 
+
+  //ex. "(* (- (+ 1.0 1.0) (/ 1.0 2.0)) 3.0)"
+  /*           `*`
+             /    \
+          '-'     3.0
+        /     \
+      '+'      '/'
+      /  \     /  \
+    1.0  1.0  1.0  2.0
+  */
   public String toStringPrefix(){
+
+      //initialize a String variable to be returned later
+      String cast="";
+            
+      // BASE CASE: no children, only a value
+      if(isValue()){
+        // return the value (i.e. 10)
+        cast += "(" + value + ")";
+      }
+      
+      // RECURSIVE CASE 1: 1 child
+      else if(right == null){
+        cast += "(" + operator + " " + left + ")";
+      }
+        
+      // RECURSIVE CASE 2: 2 children
+      else{
+        // Add a (
+        cast += "(";
+        // Add the operator
+        cast += operator;
+        // Add a SPACE
+        cast += " ";
+        // Add left
+        cast += left.toStringPrefix();
+        // Add a SPACE
+        cast += " ";
+        // Add right
+        cast += right.toStringPrefix();
+        // Add a )
+        cast += ")";
+
+      }
+      //return our string
+      return cast;
+    
+  }  
+
+  
+  //ex. "(* (- (+ 1.0 1.0) (/ 1.0 2.0)) 3.0)"
+  /*
+              `*`
+             /    \
+          '-'     3.0
+        /     \
+      '+'      '/'
+      /  \     /  \
+    1.0  1.0  1.0  2.0
+  */
+  public void printDiagram(){
+
+    // BASE CASE: no children, only a value
+    if(isValue()){
+      //print the value
+      System.out.print(value);
+      return;
+    }
+      
+    // RECURSIVE CASE:
 
     //determine the size of the diagram
 
     //Create an Array of Strings for each level to be printed
 
     //
+    System.out.println("Recursive case");
+  }
 
-    return "notYet";
+  public int getNumLevels(String toStringPrefix){
+
+    return 1;
     
-  }  
-
+  }
+  
   //Return true when the node is a value, false when it is an operator
   //when the children are null, the current tree is a value
   private boolean isValue(){
@@ -124,10 +216,15 @@ public class ExpressionTree{
     return a-b;
    }else if(op == '*'){
     return a*b;
+   }else if(op == '^'){
+    return Math.pow(a,b);
+   }else if(op == 's'){
+    return Math.sqrt(a);
    }else{ //  if(op == '/'){ //or any invalid operators
     return a/b;
    }
 
   }
+
 
  }
