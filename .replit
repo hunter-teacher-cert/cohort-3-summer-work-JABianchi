@@ -1,6 +1,7 @@
 language = "bash"
 
-run = "cd ds/Trees; javac TreeDriver.java; java TreeDriver"
+run = "cd ds/StacksQueues; javac Driver.java; java Driver"
+#run = "cd ds/Trees; javac TreeDriver.java; java TreeDriver"
 #run = "cd methods; javac Debugging.java; java Debugging"
 #run = "cd methods; javac PrintMethodsClass.java; java PrintMethodsClass"
 #run = "cd methods; javac ErwinAnand.java; java ErwinAnand"
