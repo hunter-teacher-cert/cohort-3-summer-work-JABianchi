@@ -2,7 +2,7 @@
 
 # 
 ## Goal: Intro to Pair Programming
-### Lesson Plan: 
+### Lesson Plan: APCSA Some Intro
 
 Group students randomly 
 * (See research from P. Liljendahl about ["Visibly Random Groups"](https://peterliljedahl.com/wp-content/uploads/Visibly-Random-Groups.pdf) )
