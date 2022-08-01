@@ -1,5 +1,6 @@
 # Data Structure Design Challenge
 ### Collaborators: Seth Adams, Joel Bianchi, Alana Robinson, Théa Williams
+### [Original Google Document](https://docs.google.com/document/d/1tFtXBuscNFMsqO4nrfGR-8J9VguSpiBBE1CRhY0J4HA/edit#heading=h.zhytaqu327gm)
 
 
 # Phonebook Data Structure
